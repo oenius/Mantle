@@ -47,7 +47,7 @@ static BOOL MTLValidateAndSetValue(id obj, NSString *key, id value, BOOL forceUp
 	@try {
 		if (![obj validateValue:&validatedValue forKey:key error:error]) return NO;
 
-		if (forceUpdate || value != validatedValue) {
+		if ((forceUpdate || value != validatedValue) && validatedValue) {
 			[obj setValue:validatedValue forKey:key];
 		}
 
